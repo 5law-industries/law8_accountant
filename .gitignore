@@ -147,6 +147,8 @@ celerybeat.pid
 
 # Environments
 .env
+.env.local
+.env.production
 .envrc
 .venv
 env/
@@ -154,6 +156,10 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Google Cloud
+.gcloud/
+.config/gcloud/
 
 # Spyder project settings
 .spyderproject

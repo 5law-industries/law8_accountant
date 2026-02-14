@@ -1,0 +1,58 @@
+# Google App Engine configuration file
+# For Python 3.12 runtime (Flexible Environment)
+
+runtime: python312
+env: flex
+
+# Instance configuration
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 10
+  cool_down_period_sec: 120
+  cpu_utilization:
+    target_utilization: 0.7
+
+# Resource allocation
+resources:
+  cpu: 1
+  memory_gb: 2
+  disk_size_gb: 10
+
+# Network configuration
+network:
+  forwarded_ports:
+    - 8080
+
+# Environment variables (set these in Google Cloud Console or via gcloud CLI)
+env_variables:
+  STREAMLIT_SERVER_PORT: "8080"
+  STREAMLIT_SERVER_ADDRESS: "0.0.0.0"
+  STREAMLIT_SERVER_HEADLESS: "true"
+  STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
+  STREAMLIT_SERVER_ENABLE_CORS: "false"
+  STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION: "true"
+  # Add your Supabase and other API keys via Secret Manager or environment variables
+  # SUPABASE_URL: "your-supabase-url"
+  # SUPABASE_ANON_KEY: "your-supabase-anon-key"
+  # OPENAI_API_KEY: "your-openai-key"
+  # HCAPTCHA_SITE_KEY: "your-hcaptcha-site-key"
+  # HCAPTCHA_SECRET_KEY: "your-hcaptcha-secret-key"
+
+# Health check configuration
+liveness_check:
+  path: "/_stcore/health"
+  check_interval_sec: 30
+  timeout_sec: 10
+  failure_threshold: 3
+  success_threshold: 1
+
+readiness_check:
+  path: "/_stcore/health"
+  check_interval_sec: 5
+  timeout_sec: 10
+  failure_threshold: 2
+  success_threshold: 1
+  app_start_timeout_sec: 300
+
+# Entry point
+entrypoint: streamlit run main.py --server.port=8080 --server.address=0.0.0.0
