@@ -1,0 +1,72 @@
+# Git
+.git
+.gitignore
+.github
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+*.egg-info/
+dist/
+build/
+
+# Testing
+.pytest_cache
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation
+*.md
+!README.md
+docs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Logs
+*.log
+logs/
+
+# Environment files (will be set via Cloud Run/App Engine)
+.env
+.env.*
+!.env.example
+
+# Node modules (for frontend components, build separately if needed)
+node_modules/
+
+# Data files
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploads and receipts
+uploads/
+receipts_vault/
+
+# Build artifacts
+*.egg
+*.whl

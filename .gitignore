@@ -6,7 +6,6 @@ __pycache__/
 # C extensions
 *.so
 
-<<<<<<< HEAD
 # Distribution / packaging
 .Python
 build/
@@ -26,7 +25,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-=======
+
+# Application specific
 8law.db
 receipts_vault/
 data/
@@ -36,7 +36,6 @@ reciept
 
 # Uploaded data
 data/uploads/*
->>>>>>> c47add52 (Initial commit)
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -148,6 +147,8 @@ celerybeat.pid
 
 # Environments
 .env
+.env.local
+.env.production
 .envrc
 .venv
 env/
@@ -156,11 +157,14 @@ ENV/
 env.bak/
 venv.bak/
 
+# Google Cloud
+.gcloud/
+.config/gcloud/
+
 # Spyder project settings
 .spyderproject
 .spyproject
 
-<<<<<<< HEAD
 # Rope project settings
 .ropeproject
 
@@ -218,10 +222,9 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
-=======
+
 # Ignore all .pyc files in all folders
 **/*.pyc
 
-# Clean up: Remove these folders from the project directory if present
-# venv/, __pycache__/, node_modules/
->>>>>>> c47add52 (Initial commit)
+# Node modules
+node_modules/
