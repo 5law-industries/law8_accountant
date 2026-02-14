@@ -311,14 +311,35 @@ Or view in [Cloud Console Logs Explorer](https://console.cloud.google.com/logs).
 
 **Solution**: Verify all imports in main.py are correct and dependencies are in requirements.txt
 
-#### 3. Authentication Not Working
+#### 3. Cloud Build: "Dockerfile: no such file or directory"
+
+**Symptoms**: Cloud Build fails with:
+```
+unable to prepare context: unable to evaluate symlinks in Dockerfile path: 
+lstat /workspace/Dockerfile: no such file or directory
+```
+
+**Root Cause**: This error occurs when Cloud Build is triggered on a commit that predates the addition of deployment files (Dockerfile, cloudbuild.yaml, etc.).
+
+**Solutions**:
+- **If on old branch/commit**: Switch to latest branch with deployment files
+- **If PR not merged**: Merge the PR containing Dockerfile to base branch
+- **If testing locally**: Ensure you're on a branch that has the Dockerfile
+- **Check files exist**: Run `ls -la Dockerfile cloudbuild.yaml` to verify
+
+**Prevention**:
+- Only trigger Cloud Build after deployment files are merged to base branch
+- Configure Cloud Build triggers to only run on specific branches
+- See `BUILD_FAILURE_ANALYSIS.md` for detailed explanation
+
+#### 4. Authentication Not Working
 
 **Solutions**:
 - Verify Supabase credentials are correct
 - Check hCaptcha keys are properly configured
 - Ensure secrets are accessible by the service account
 
-#### 4. Memory/CPU Limits Exceeded
+#### 5. Memory/CPU Limits Exceeded
 
 **Solution**: Increase resources in deployment:
 ```bash
@@ -328,7 +349,7 @@ gcloud run services update law8-accountant \
   --region us-central1
 ```
 
-#### 5. Slow Cold Starts
+#### 6. Slow Cold Starts
 
 **Solutions**:
 - Set minimum instances: `--min-instances 1`
