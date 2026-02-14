@@ -2,6 +2,7 @@
 
 from typing import Any, Dict, List
 from datetime import datetime
+import uuid
 
 
 # In-memory storage for notifications (for testing purposes)
@@ -25,7 +26,7 @@ def send_notification(
         _notifications_store[user_id] = []
     
     notification = {
-        "id": f"notif_{len(_notifications_store[user_id]) + 1}",
+        "id": str(uuid.uuid4()),
         "user_id": user_id,
         "message": message,
         "type": notif_type,
