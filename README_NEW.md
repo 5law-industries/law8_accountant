@@ -29,8 +29,9 @@
 ```
 
 ## Usage
+- **Run the Streamlit app** (recommended): `streamlit run main.py`
+- Run the Streamlit app (legacy): `streamlit run app/frontend.py`
 - Run the backend API: `uvicorn backend.api:app --reload`
-- Run the Streamlit app: `streamlit run app/frontend.py`
 - Install dependencies: `pip install -r requirements.txt`
 - For JS components: `cd app/components/hcaptcha_component/frontend && npm install && npm run build`
 
